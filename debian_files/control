@@ -1,0 +1,34 @@
+Source: eps2probandltf 
+Section: science
+Priority: extra
+Maintainer: Vegard Bones <vegard.bones@met.no>
+Build-Depends: debhelper (>= 5), cdbs,
+ autoconf,
+ automake(>=1.9),
+ libfimex-dev (>=0.33.1),
+ libboost-program-options-dev,
+ libboost-date-time-dev,
+ liblog4cxx10-dev,
+ libxml2-dev,
+ xmlto,
+ libweather-symbol-dev (>= 0.3.1)
+Build-Conflicts: autoconf2.13, automake1.4
+Standards-Version: 3.8.4
+
+Package: eps2probandltf-data-1
+Architecture: all
+Depends: ${shlibs:Depends},
+ ${misc:Depends}
+Suggests: eps2probandltf
+Description: Configuration files for eps2probandltf
+ Version-independent configuration files for eps2probandltf. You should be 
+ able to use any version of this package with any version of eps2probandltf.
+
+Package: eps2probandltf-@METNO_VERSION@
+Architecture: any
+Depends: ${shlibs:Depends},
+ ${misc:Depends}, eps2probandltf-data-1
+Provides: eps2probandltf
+Description: probability generator for ec ensemble forecast
+ Reads ec ensemble data from wdb, and generates probability forecasts
+ which are inserted back into the database

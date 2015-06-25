@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=iso-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<h2><a name="implementasjon_av_enkelt_produkt"
+ id="implementasjon_av_enkelt_produkt">Implementasjon av enkelt produkt</a></h2>
+<div class="level2">
+</div>
+<h4><a name="basis_v&aelig;rsymboler" id="basis_v&aelig;rsymboler">Basis v&aelig;rsymboler</a></h4>
+<div class="level4">
+<ul>
+  <li class="level1">
+    <div class="li"> 1 pent/sol </div>
+  </li>
+  <li class="level1">
+    <div class="li"> 2 lettskyet</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 3 delvis skyet</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 4 overskyet</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 5 byger</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 9 regn</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 10 kraftig regn</div>
+  </li>
+</ul>
+<p>
+<a href="http://fou.oslo.dnmi.no/%7Everif/doc/algo.html"
+ class="urlextern" title="http://fou.oslo.dnmi.no/~verif/doc/algo.html"
+ rel="nofollow">http://fou.oslo.dnmi.no/~verif/doc/algo.html</a> (bare
+trinn 1 og 2)
+</p>
+</div>
+<h4><a name="algoritme_for_v&aelig;rsymbol_offline"
+ id="algoritme_for_v&aelig;rsymbol_offline">Algoritme for v&aelig;rsymbol ++
+(offline)</a></h4>
+<div class="level4">
+<p><strong>For hvert gridpunkt og prognoselengde</strong>
+</p>
+<ol>
+  <li class="level1">
+    <div class="li"> For hvert ensemblemedlem, beregn basis v&aelig;rsymbol
+(se over)</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Tell antall medlemmer av hvert v&aelig;rsymbol og beregn
+sannsynligheter ved &aring; dele p&aring; antall ensemblemedlemmer</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Beregn hvilken av de to symbolklassene <em>opphold</em>
+(1,2,3,4) og <em>nedb&oslash;r</em> (5,9,10) som har st&oslash;rst sannsynlighet.
+Fra klassen med h&oslash;yest sannsynlighet velges symbolet med hyppigst
+forekomst</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Usikkerheten til valgt symbol (la oss si nr. <em>i</em>)
+beregnes ved <br>
+    <em>sum_j w(i,j) * p(j)</em> <br>
+hvor p(j) er sannsynligheten for symbol <em>j</em> og w en matrise med
+vekter definert slik </div>
+  </li>
+</ol>
+<table class="inline">
+  <tbody>
+    <tr class="row0">
+      <td class="col0 rightalign"> <br>
+      </td>
+      <th class="col1 rightalign"> 1</th>
+      <th class="col2 rightalign"> 2</th>
+      <th class="col3 rightalign"> 3</th>
+      <th class="col4 rightalign"> 4</th>
+      <th class="col5 rightalign"> 5</th>
+      <th class="col6 rightalign"> 9</th>
+      <th class="col7 rightalign"> 10</th>
+    </tr>
+    <tr class="row1">
+      <th class="col0 rightalign"> 1</th>
+      <td class="col1 rightalign"> 1.00</td>
+      <td class="col2 rightalign"> 1.0</td>
+      <td class="col3 rightalign"> 0.50</td>
+      <td class="col4 rightalign"> 0.00</td>
+      <td class="col5 rightalign"> 0.0</td>
+      <td class="col6 rightalign"> 0.0</td>
+      <td class="col7"> 0.0</td>
+    </tr>
+    <tr class="row2">
+      <th class="col0 rightalign"> 2</th>
+      <td class="col1 rightalign"> 0.75</td>
+      <td class="col2 rightalign"> 1.0</td>
+      <td class="col3 rightalign"> 0.75</td>
+      <td class="col4 rightalign"> 0.00</td>
+      <td class="col5 rightalign"> 0.0</td>
+      <td class="col6 rightalign"> 0.0</td>
+      <td class="col7"> 0.0</td>
+    </tr>
+    <tr class="row3">
+      <th class="col0 rightalign"> 3</th>
+      <td class="col1 rightalign"> 0.25</td>
+      <td class="col2 rightalign"> 1.0</td>
+      <td class="col3 rightalign"> 1.00</td>
+      <td class="col4 rightalign"> 0.25</td>
+      <td class="col5 rightalign"> 0.0</td>
+      <td class="col6 rightalign"> 0.0</td>
+      <td class="col7"> 0.0</td>
+    </tr>
+    <tr class="row4">
+      <th class="col0 rightalign"> 4</th>
+      <td class="col1 rightalign"> 0.00</td>
+      <td class="col2 rightalign"> 0.5</td>
+      <td class="col3 rightalign"> 1.00</td>
+      <td class="col4 rightalign"> 1.00</td>
+      <td class="col5 rightalign"> 0.0</td>
+      <td class="col6 rightalign"> 0.0</td>
+      <td class="col7"> 0.0</td>
+    </tr>
+    <tr class="row5">
+      <th class="col0 rightalign"> 5</th>
+      <td class="col1 rightalign"> 0.00</td>
+      <td class="col2 rightalign"> 0.0</td>
+      <td class="col3 rightalign"> 0.00</td>
+      <td class="col4 rightalign"> 0.00</td>
+      <td class="col5 rightalign"> 1.0</td>
+      <td class="col6 rightalign"> 1.0</td>
+      <td class="col7"> 0.5</td>
+    </tr>
+    <tr class="row6">
+      <th class="col0 rightalign"> 9</th>
+      <td class="col1 rightalign"> 0.00</td>
+      <td class="col2 rightalign"> 0.0</td>
+      <td class="col3 rightalign"> 0.00</td>
+      <td class="col4 rightalign"> 0.00</td>
+      <td class="col5 rightalign"> 0.5</td>
+      <td class="col6 rightalign"> 1.0</td>
+      <td class="col7"> 1.0</td>
+    </tr>
+    <tr class="row7">
+      <th class="col0"> 10</th>
+      <td class="col1 rightalign"> 0.00</td>
+      <td class="col2 rightalign"> 0.0</td>
+      <td class="col3 rightalign"> 0.00</td>
+      <td class="col4 rightalign"> 0.00</td>
+      <td class="col5 rightalign"> 0.5</td>
+      <td class="col6 rightalign"> 1.0</td>
+      <td class="col7"> 1.0</td>
+    </tr>
+  </tbody>
+</table>
+<ol>
+  <li class="level1">
+    <div class="li"> <strong>Temperatur</strong> defineres som
+medianen av ensemblemedlemmene som har v&aelig;rsymbol med positiv vekt, dvs.
+w(i,) &gt; 0.</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Offline defineres det fire <strong>sikkerheter
+for temperatur</strong></div>
+    <ul>
+      <li class="level2">
+        <div class="li"> andel av ensemblemedlemmer (alle
+51) som er innenfor +-1, +-2, +-3, +-4 grader. Hvilken usikkerhet som
+skal brukes, bestemmes online.</div>
+      </li>
+    </ul>
+  </li>
+</ol>
+<ol>
+  <li class="level1">
+    <div class="li"> <strong>Vindstyrken</strong> defineres som
+medianen av ensemblemedlemmene som har v&aelig;rsymbol med positiv vekt, dvs.
+w(i,) &gt; 0. <strong>Vindretningen</strong> velges fra tilh&oslash;rende
+ensemblemedlem.</div>
+  </li>
+  <li class="level1">
+    <div class="li"> <strong>Sikkerheten til vind</strong> = 0.67 *
+sikkerheten til vindstyrken + 0.33 * sikkerheten til vindretningen</div>
+    <ul>
+      <li class="level3">
+        <div class="li"> Sikkerheten til vindstyrken = andel av
+ensemblemedlemmer (alle 51) som er innenfor </div>
+        <ul>
+          <li class="level5">
+            <div class="li"> +-2 m/s hvis vindstyrken er lavere enn 12
+m/s</div>
+          </li>
+          <li class="level5">
+            <div class="li"> +-3 m/s ellers</div>
+          </li>
+        </ul>
+      </li>
+      <li class="level3">
+        <div class="li"> Sikkerheten til vindretningen er definert som </div>
+        <ul>
+          <li class="level5">
+            <div class="li"> 1 hvis vindstyrken er lavere enn 3 m/s</div>
+          </li>
+          <li class="level5">
+            <div class="li"> andel av ensemblemedlemmer (alle 51) som
+er innenfor +-45 grader ved vindstyrke mellom 3 og 12 m/s</div>
+          </li>
+          <li class="level5">
+            <div class="li"> andel av ensemblemedlemmer (alle 51) som
+er innenfor +- 22.5 grader ved vindstyrke h&oslash;yere enn 12 m/s </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+<ol>
+  <li class="level1">
+    <div class="li"> <strong>Nedb&oslash;rsmengde</strong> (vises bare som
+tekst) velges som medianen av ensemblemedlemmene som har v&aelig;rsymbol med
+positiv vekt, dvs. w(i,) &gt; 0.</div>
+  </li>
+</ol>
+</div>
+<h4><a name="online_algoritme" id="online_algoritme">Online algoritme</a></h4>
+<div class="level4">
+</div>
+<h5><a name="felter_som_m&aring;_v&aelig;re_raskt_aksessbare"
+ id="felter_som_m&aring;_v&aelig;re_raskt_aksessbare">Felter som m&aring; v&aelig;re raskt
+aksessbare</a></h5>
+<div class="level5">
+<ol>
+  <li class="level1">
+    <div class="li"> V&aelig;rsymbol</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Usikkerhet til v&aelig;rsymbol </div>
+  </li>
+  <li class="level1">
+    <div class="li"> Temperatur</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Usikkerhet til temperatur, 4 felter!</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Vindstyrke</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Vindretning</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Usikkerhet til vind, 1 felt</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Nedb&oslash;rsmengde</div>
+  </li>
+</ol>
+<p>
+I alt m&aring; 11 felt v&aelig;re tilgjengelige i tillegg til topografi.
+</p>
+</div>
+<h5><a name="online_generering_av_produkt"
+ id="online_generering_av_produkt">Online generering av produkt</a></h5>
+<div class="level5">
+<ol>
+  <li class="level1">
+    <div class="li"> Finn n&aelig;rmeste gridpunkt</div>
+  </li>
+  <li class="level1">
+    <div class="li"> H&oslash;ydejuster temperatur</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Finn hvilken temperaturusikkerhet som skal brukes</div>
+    <ul>
+      <li class="level2">
+        <div class="li"> t2 i (-99,-20) +-4 grader</div>
+      </li>
+      <li class="level2">
+        <div class="li"> t2 i [-20,-10) +-3 grader</div>
+      </li>
+      <li class="level2">
+        <div class="li"> t2 i [-10,-2) +-2 grader</div>
+      </li>
+      <li class="level2">
+        <div class="li"> t2 i [-2,2) +-1 grad</div>
+      </li>
+      <li class="level2">
+        <div class="li"> t2 i [2,25) +-2 grader</div>
+      </li>
+      <li class="level2">
+        <div class="li"> t2 i [25,99) +-3 grader</div>
+      </li>
+    </ul>
+  </li>
+  <li class="level1">
+    <div class="li"> Juster evt. v&aelig;rsymbol utfra temperatur, f.eks. fra
+regn til sludd eller sn&oslash;. <a
+ href="http://fou.oslo.dnmi.no/%7Everif/doc/algo.html" class="urlextern"
+ title="http://fou.oslo.dnmi.no/~verif/doc/algo.html" rel="nofollow">http://fou.oslo.dnmi.no/~verif/doc/algo.html</a>
+(trinn 3).</div>
+  </li>
+  <li class="level1">
+    <div class="li"> Les resten av variablene</div>
+  </li>
+</ol>
+<p>
+Usikkerhetene kodes til farger slik
+</p>
+<ul>
+  <li class="level1">
+    <div class="li"> 90 - 100% &#8658; Gr&oslash;nn (sikkert)</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 60 - 90% &#8658; Gul (usikkert)</div>
+  </li>
+  <li class="level1">
+    <div class="li"> 0 - 60% &#8658; R&oslash;d (sv&aelig;rt usikkert)</div>
+  </li>
+</ul>
+</div>
+<h3><a name="algoritme_for_avansert_produkt_epsgram"
+ id="algoritme_for_avansert_produkt_epsgram">Algoritme for avansert
+produkt (epsgram)</a></h3>
+<div class="level3">
+<p>Persentilene 10, 25, 75 og 90 for temperatur og d&oslash;gnlig nedb&oslash;r
+defineres ved henholdsvis de sorterte ensemblemedlemmene nr. 5, 13, 39
+og 46.</p>
+</div>
+<br>
+</body>
+</html>

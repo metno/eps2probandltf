@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:complexType name="cfnamed_type">
+		<xs:attribute name="cfname" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:simpleType name="DataType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="double" />
+			<xs:enumeration value="float" />
+			<xs:enumeration value="int" />
+			<xs:enumeration value="short" />
+			<xs:enumeration value="char" />
+			<xs:enumeration value="String" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="cfnamed_value_type">
+		<xs:complexContent>
+			<xs:extension base="cfnamed_type">
+				<xs:attribute name="value" />
+				<xs:attribute name="unit" type="DataType" default="String" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="value_type">
+		<xs:attribute name="value" type="xs:float" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="complete_dimension_type">
+		<xs:complexContent>
+			<xs:extension base="cfnamed_type">
+				<xs:sequence>
+					<xs:element name="attribute" type="cfnamed_value_type"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="value" type="value_type"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>	
+	</xs:complexType>
+
+	<xs:complexType name="parameter_type">
+		<xs:complexContent>
+			<xs:extension base="cfnamed_type">
+				<xs:attribute name="time_offset" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="complete_parameter_type">
+		<xs:complexContent>
+			<xs:extension base="parameter_type">
+				<xs:sequence>
+					<xs:element name="attribute" type="cfnamed_value_type"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="dimension" type="cfnamed_value_type"
+						minOccurs="0" maxOccurs="1" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="variable_type">
+		<xs:complexContent>
+			<xs:extension base="cfnamed_type">
+				<xs:sequence>
+					<xs:element name="dimension" type="cfnamed_type" 
+						minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="attribute" type="cfnamed_value_type"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="value" type="value_type"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="pgen_probabilty_parameter_type">
+		<xs:sequence>
+			<xs:element name="cloud_cover" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_from_in" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_to_in" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="air_pressure" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="dew_point_temperature" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="sea_surface_wave_significant_height" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="yr_symbol" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="probability_yr_symbol" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_10" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_25" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_50" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_75" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_90" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_1_prob" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="temperature_2_prob" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="x_wind" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="y_wind" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="wind_prob" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="wind_10" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="wind_25" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="wind_50" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="wind_75" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="wind_90" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_out" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_10" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_25" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_50" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_75" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_90" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_1" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_2" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_3" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_4" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_5" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="precipitation_6" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="cloud_10" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="cloud_25" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="cloud_50" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="cloud_75" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="cloud_90" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="significant_wave_height_10" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="significant_wave_height_25" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="significant_wave_height_50" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="significant_wave_height_75" type="complete_parameter_type" minOccurs="0" />
+			<xs:element name="significant_wave_height_90" type="complete_parameter_type" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="pgen_probabilty_type">
+		<xs:sequence>
+			<xs:element name="global_attribute" type="cfnamed_value_type"  minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="direct_transfer" type="cfnamed_type" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="dimension" type="complete_dimension_type" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="variable" type="variable_type" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="parameter" type="pgen_probabilty_parameter_type" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="eps2probandltf" type="pgen_probabilty_type" />
+
+</xs:schema>

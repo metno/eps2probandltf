@@ -1,0 +1,131 @@
+eps2probandltf (1.1.2-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@pc4347.pc.met.no>  Mon, 13 Apr 2015 09:54:58 +0200
+
+eps2probandltf (1.1.1-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@pc4347.pc.met.no>  Mon, 09 Feb 2015 13:14:52 +0100
+
+eps2probandltf (1.1.0-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@pc4347.pc.met.no>  Fri, 06 Feb 2015 12:36:39 +0100
+
+eps2probandltf (1.0.4-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@pc4347.pc.met.no>  Mon, 05 Jan 2015 14:05:37 +0100
+
+eps2probandltf (1.0.2-1) precise; urgency=low
+
+  * Version and dependency update
+
+ -- Vegard Bønes <vegardb@pc4347.pc.met.no>  Mon, 28 Apr 2014 13:13:51 +0200
+
+eps2probandltf (1.0.1-1) precise; urgency=low
+
+  * New version
+
+ -- Vegard Bønes <vegardb@pc4347.pc.met.no>  Mon, 28 Apr 2014 09:17:35 +0200
+
+eps2probandltf (1.0.0-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bones <vegard.bones@met.no>  Tue, 11 Feb 2014 09:57:39 +0100
+
+eps2probandltf (0.8.0-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@met.no>  Tue, 20 Aug 2013 14:45:43 +0200
+
+eps2probandltf (0.7.4-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@met.no>  Wed, 19 Jun 2013 13:26:28 +0200
+
+eps2probandltf (0.7.3-1) lucid; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@met.no>  Mon, 03 Jun 2013 09:32:03 +0200
+
+eps2probandltf (0.7.2-1) lucid; urgency=low
+
+  * New release 
+
+ -- Vegard Bønes <vegardb@met.no>  Fri, 24 May 2013 07:41:24 +0200
+
+eps2probandltf (0.7.1-1) lucid; urgency=low
+
+  * New release
+
+ -- Vegard Bønes <vegard.bonesb@met.no>  Wed, 22 May 2013 14:23:34 +0200
+
+eps2probandltf (0.7.0-1) lucid; urgency=low
+
+  * new release
+
+ -- Vegard Bønes <vegard.bonesb@met.no>  Thu, 19 Apr 2012 13:39:05 +0000
+
+eps2probandltf (0.6.1-1) lucid; urgency=low
+
+  * new release
+
+ -- Vegard Bones <vegard.bones@met.no>  Mon, 06 Feb 2012 16:03:20 +0100
+
+eps2probandltf (0.6.0-1) lucid; urgency=low
+
+  * new release
+
+ -- Vegard Bones <vegard.bones@met.no>  Mon, 06 Feb 2012 15:03:51 +0100
+
+eps2probandltf (0.5.0-1) lucid; urgency=low
+
+  * new release
+
+ -- Vegard Bones <vegard.bones@met.no>  Fri, 13 Jan 2012 09:55:24 +0100
+
+eps2probandltf (0.4.0-1) lucid; urgency=low
+
+  * new release
+
+ -- Vegard Bones <vegard.bones@met.no>  Wed, 04 Jan 2012 10:50:28 +0100
+
+eps2probandltf (0.3.0-1) lucid; urgency=low
+
+  * new release
+
+ -- Vegard Bones <vegard.bones@met.no>  Fri, 09 Dec 2011 09:44:28 +0100
+
+eps2probandltf (0.2.1-1) lucid; urgency=low
+
+  * Updated for source changes
+
+ -- Vegard Bønes <vegardb@dev-vm185.met.no>  Fri, 25 Nov 2011 17:16:30 +0100
+
+eps2probandltf (0.2.0-2) lucid; urgency=low
+
+  * New build against correct fimex version
+
+ -- Vegard Bønes <vegard.bones@met.no>  Fri, 25 Nov 2011 15:30:36 +0100
+
+eps2probandltf (0.2.0-1) lucid; urgency=low
+
+  * New release
+
+ -- Vegard Bones <vegard.bones@met.no>  Tue, 22 Nov 2011 15:35:12 +0100
+
+eps2probandltf (0.1.0-1) lucid; urgency=medium
+
+  * Initial release
+    
+ -- Vegard Bønes <vegard.bones@met.no>  Fri, 11 Nov 2011 13:50:00 +0000

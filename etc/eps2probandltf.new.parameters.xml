@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eps2probandltf_config>
+
+<eps2probandltf xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="eps2probandltf.parameters.xsd">
+
+	<global_attribute cfname="Conventions" value="CF-1.0 met.no-extensions"/>
+	<global_attribute cfname="title" value="met.no probability forecasts"/>
+	<global_attribute cfname="summary" value="Selected weather parameters with probabilities, based on ensemble data"/>
+	<global_attribute cfname="keywords" value="ensemble, confidence, percentile, yr.no"/>
+	<global_attribute cfname="id" value="probability_forecast"/>
+	<global_attribute cfname="naming_authority" value="no.met"/>
+	<global_attribute cfname="cdm_data_type" value="Grid"/>
+	<global_attribute cfname="institution" value="met.no"/>
+
+	<direct_transfer cfname="forecast_reference_time" />
+	<direct_transfer cfname="runtime" />
+	<direct_transfer cfname="altitude" />
+	<direct_transfer cfname="time" />
+	<direct_transfer cfname="longitude" />
+	<direct_transfer cfname="latitude" />
+	<direct_transfer cfname="x" />
+	<direct_transfer cfname="y" />
+	
+	<dimension cfname="percentile">
+		<attribute cfname="units" value="1" />
+		<attribute cfname="metno_name" value="cumulative_distribution_function_over_realization" />
+		<attribute cfname="long_name" value="cumulative_distribution_function_over_realization" />
+		<value value="0.1" />
+		<value value="0.25" />
+		<value value="0.5" />
+		<value value="0.75" />
+		<value value="0.9" />
+	</dimension>
+	<dimension cfname="interval_of_air_temperature">
+		<attribute cfname="bounds" value="temperature_bounds" />
+		<attribute cfname="units" value="K" />
+ 		<attribute cfname="standard_name" value="air_temperature" />
+		<attribute cfname="long_name" value="air_temperature offset from a given value (in either direction)" />
+		<value value="1.5" />
+		<value value="2.5" />
+	</dimension>
+	<dimension cfname="confidence_bounds">
+		<value value="0" />
+		<value value="1" />
+	</dimension>
+	
+	<dimension cfname="precipitation_limit">
+		<attribute cfname="units" value="kg/m2" />
+		<attribute cfname="metno_name" value="limit_of_precipitation_amount" />
+		<attribute cfname="long_name" value="limit_of_precipitation_amount" />
+		<value value=".1" />
+		<value value=".2" />
+		<value value=".5" />
+		<value value="1" />
+		<value value="2" />
+		<value value="5" />
+	</dimension>
+	
+	<variable cfname="temperature_bounds">
+		<dimension cfname="confidence_bounds" />
+		<dimension cfname="interval_of_air_temperature" />
+		<attribute cfname="long_name" value="bounds of temperature - for confidence variables" />
+		<value value="-1.5" />
+		<value value="1.5" />
+		<value value="-2.5" />
+		<value value="2.5" />
+	</variable>
+	
+	<parameter>
+
+		<cloud_cover cfname="cloud_area_fraction" />
+
+		<precipitation_from_in cfname="precipitation_amount_acc" />
+
+		<precipitation_to_in cfname="precipitation_amount_acc"
+			time_offset="6" />
+
+		<temperature cfname="air_temperature_2m">
+			<attribute cfname="units" value="K" />
+			<attribute cfname="standard_name" value="air_temperature" />
+			<attribute cfname="long_name" value="air_temperature_2m" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<attribute cfname="ancillary_variables" value="air_temperature_confidence" />
+		</temperature>
+
+		<air_pressure cfname="sea_level_pressure">
+			<attribute cfname="units" value="Pa" />
+			<!-- <attribute cfname="scale_factor" value="10" unit="float"/> -->
+			<attribute cfname="standard_name" value="air_pressure_at_sea_level" />
+			<attribute cfname="long_name" value="air_pressure_at_sea_level" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+		</air_pressure>
+
+		<dew_point_temperature cfname="dew_point_temperature" />
+
+		<sea_surface_wave_significant_height cfname="significant_wave_height" />
+ 
+		<yr_symbol cfname="weather_symbol" time_offset="6">
+			<attribute cfname="metno_name" value="weather_symbol status_flag" />
+			<attribute cfname="long_name" value="weather_symbol status_flag" />
+			<attribute cfname="flag_values" value="0, 1, 2, 3, 4, 5, 9, 10, 40, 41, 46"/>
+			<attribute cfname="flag_meanings" value="error sun light_cloud partly_cloud cloud light_rain_sun rain heavy_rain drizzle_sun rain_sun drizzle"/>
+			<attribute cfname="ancillary_variables" value="weather_symbol_confidence" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+		</yr_symbol>
+		
+		<probability_yr_symbol cfname="weather_symbol_confidence"
+			time_offset="6">
+			<attribute cfname="units" value="%" />
+			<attribute cfname="metno_name" value="weather_symbol confidence" />
+			<attribute cfname="long_name" value="weather_symbol confidence" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+		</probability_yr_symbol>
+
+		<temperature_10 cfname="air_temperature_percentiles">
+			<attribute cfname="units" value="K" />
+			<attribute cfname="standard_name" value="air_temperature" />
+			<attribute cfname="long_name" value="air_temperature" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="percentile" value="0.1" />
+		</temperature_10>
+		<temperature_25 cfname="air_temperature_percentiles">
+			<dimension cfname="percentile" value="0.25" />
+		</temperature_25>
+		<temperature_50 cfname="air_temperature_percentiles">
+			<dimension cfname="percentile" value="0.5" />
+		</temperature_50>
+		<temperature_75 cfname="air_temperature_percentiles">
+			<dimension cfname="percentile" value="0.75" />
+		</temperature_75>
+		<temperature_90 cfname="air_temperature_percentiles">
+			<dimension cfname="percentile" value="0.9" />
+		</temperature_90>
+
+		<temperature_1_prob cfname="air_temperature_confidence">
+			<attribute cfname="units" value="%" />
+			<attribute cfname="metno_name" value="air_temperature confidence" />
+			<attribute cfname="long_name"
+				value="probabilty of air_temperature within +/- interval_of_air_temperature" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="interval_of_air_temperature" value="1.5" />
+		</temperature_1_prob>
+		<temperature_2_prob cfname="air_temperature_confidence">
+			<dimension cfname="interval_of_air_temperature" value="2.5" />
+		</temperature_2_prob>
+
+		<x_wind cfname="x_wind_10m">
+			<attribute cfname="units" value="m/s" />
+			<attribute cfname="standard_name" value="x_wind" />
+			<attribute cfname="long_name" value="x_wind" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<attribute cfname="ancillary_variables" value="wind_speed_confidence" />
+		</x_wind>
+		<y_wind cfname="y_wind_10m">
+			<attribute cfname="units" value="m/s" />
+			<attribute cfname="standard_name" value="y_wind" />
+			<attribute cfname="long_name" value="y_wind" />
+			<attribute cfname="ancillary_variables" value="wind_speed_confidence" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+		</y_wind>
+		<wind_prob cfname="wind_speed_confidence">
+			<attribute cfname="units" value="%" />
+			<attribute cfname="metno_name" value="wind_speed confidence" />
+			<attribute cfname="long_name" value="wind_speed confidence" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+		</wind_prob>
+		<wind_10 cfname="wind_speed">
+			<attribute cfname="units" value="m/s" />
+			<attribute cfname="standard_name" value="wind_speed" />
+			<attribute cfname="long_name" value="wind_speed" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="percentile" value="0.1" />
+		</wind_10>
+		<wind_25 cfname="wind_speed">
+			<dimension cfname="percentile" value="0.25" />
+		</wind_25>
+		<wind_50 cfname="wind_speed">
+			<dimension cfname="percentile" value="0.5" />
+		</wind_50>
+		<wind_75 cfname="wind_speed">
+			<dimension cfname="percentile" value="0.75" />
+		</wind_75>
+		<wind_90 cfname="wind_speed">
+			<dimension cfname="percentile" value="0.9" />
+		</wind_90>
+
+		<precipitation_out cfname="precipitation_amount"
+			time_offset="6">
+			<attribute cfname="units" value="kg/m2" />
+			<attribute cfname="standard_name" value="precipitation_amount" />
+			<attribute cfname="long_name" value="precipitation_amount" />
+			<attribute cfname="cell_methods" value="time: sum" />
+			<attribute cfname="ancillary_variables" value="precipitation_limit_confidence" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+		</precipitation_out>
+
+		<precipitation_10 cfname="precipitation_percentiles"
+			time_offset="6">
+			<attribute cfname="units" value="kg/m2" />
+			<attribute cfname="standard_name" value="precipitation_amount" />
+			<attribute cfname="long_name" value="precipitation_amount" />
+			<attribute cfname="cell_methods" value="time: sum" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="percentile" value="0.1" />
+		</precipitation_10>
+		<precipitation_25 cfname="precipitation_percentiles"
+			time_offset="6">
+			<dimension cfname="percentile" value="0.25" />
+		</precipitation_25>
+		<precipitation_50 cfname="precipitation_percentiles"
+			time_offset="6">
+			<dimension cfname="percentile" value="0.5" />
+		</precipitation_50>
+		<precipitation_75 cfname="precipitation_percentiles"
+			time_offset="6">
+			<dimension cfname="percentile" value="0.75" />
+		</precipitation_75>
+		<precipitation_90 cfname="precipitation_percentiles"
+			time_offset="6">
+			<dimension cfname="percentile" value="0.9" />
+		</precipitation_90>
+
+		<precipitation_1 cfname="precipitation_limit_confidence"
+			time_offset="6">
+			<attribute cfname="units" value="%" />
+			<attribute cfname="metno_name" value="limit_of_precipitation_amount confidence" />
+			<attribute cfname="long_name"
+				value="probability of precipitation_amount above precipitation_limit" />
+			<attribute cfname="cell_methods" value="time: sum" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="precipitation_limit" value="0.1" />
+		</precipitation_1>
+		<precipitation_2 cfname="precipitation_limit_confidence"
+			time_offset="6">
+			<dimension cfname="precipitation_limit" value="0.2" />
+		</precipitation_2>
+		<precipitation_3 cfname="precipitation_limit_confidence"
+			time_offset="6">
+			<dimension cfname="precipitation_limit" value="0.5" />
+		</precipitation_3>
+		<precipitation_4 cfname="precipitation_limit_confidence"
+			time_offset="6">
+			<dimension cfname="precipitation_limit" value="1" />
+		</precipitation_4>
+		<precipitation_5 cfname="precipitation_limit_confidence"
+			time_offset="6">
+			<dimension cfname="precipitation_limit" value="2" />
+		</precipitation_5>
+		<precipitation_6 cfname="precipitation_limit_confidence"
+			time_offset="6">
+			<dimension cfname="precipitation_limit" value="5" />
+		</precipitation_6>
+		
+		<cloud_10 cfname="cloud_area_fraction">
+			<attribute cfname="standard_name" value="cloud_area_fraction" />
+			<attribute cfname="long_name" value="cloud_area_fraction" />
+			<attribute cfname="units" value="%" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="percentile" value="0.1" />
+		</cloud_10>
+		<cloud_25 cfname="cloud_area_fraction">
+			<dimension cfname="percentile" value="0.25" />
+		</cloud_25>
+		<cloud_50 cfname="cloud_area_fraction">
+			<dimension cfname="percentile" value="0.5" />
+		</cloud_50>
+		<cloud_75 cfname="cloud_area_fraction">
+			<dimension cfname="percentile" value="0.75" />
+		</cloud_75>
+		<cloud_90 cfname="cloud_area_fraction">
+			<dimension cfname="percentile" value="0.9" />
+		</cloud_90>
+
+		<significant_wave_height_10 cfname="sea_surface_wave_significant_height">
+			<attribute cfname="standard_name" value="sea_surface_wave_significant_height" />
+			<attribute cfname="long_name" value="sea_surface_wave_significant_height" />
+			<attribute cfname="units" value="m" />
+			<attribute cfname="_FillValue" value="-32767" unit="float"/>
+			<dimension cfname="percentile" value="0.1" />
+		</significant_wave_height_10>
+		<significant_wave_height_25 cfname="sea_surface_wave_significant_height">
+			<dimension cfname="percentile" value="0.25" />
+		</significant_wave_height_25>
+		<significant_wave_height_50 cfname="sea_surface_wave_significant_height">
+			<dimension cfname="percentile" value="0.5" />
+		</significant_wave_height_50>
+		<significant_wave_height_75 cfname="sea_surface_wave_significant_height">
+			<dimension cfname="percentile" value="0.75" />
+		</significant_wave_height_75>
+		<significant_wave_height_90 cfname="sea_surface_wave_significant_height">
+			<dimension cfname="percentile" value="0.9" />
+		</significant_wave_height_90>
+
+ 	</parameter>
+</eps2probandltf>

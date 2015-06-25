@@ -1,0 +1,27 @@
+Make probability forecasts from eps data
+
+
+Examples of how to call program:
+
+eps2probandltf \
+	--source.file=eps_yr_lqqt-h4_00.felt \
+	--sink.file=test.orginal.nc \
+	--timesteps=240 \
+	--parameters_definitions=${SYSCONFDIR}/eps2probandltf/eps2probandltf.parameters.xml
+
+
+eps2probandltf \
+	--source.file=eps_yr.nc \
+	--source.type=netcdf \
+	--sink.file=test.eps_yr.nc \
+	--timesteps=240 \
+	--parameters_definitions=${SYSCONFDIR}/eps2probandltf/eps2probandltf.eps_yr.parameters.xml 
+
+
+eps2probandltf \
+	--source.file=eps_yrcal.nc \
+	--source.type=netcdf \
+	--sink.file=test.eps_yrcal.nc \
+	--timesteps=240 \
+	--parameters_definitions=${SYSCONFDIR}/eps2probandltf/eps2probandltf.eps_yr.parameters.xml \
+	--config=${SYSCONFDIR}/eps2probandltf/eps_yrcal.conf
